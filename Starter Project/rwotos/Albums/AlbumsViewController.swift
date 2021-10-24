@@ -29,121 +29,121 @@
 import UIKit
 
 class AlbumsViewController: UIViewController {
-  static let sectionHeaderElementKind = "section-header-element-kind"
-
-  enum Section: String, CaseIterable {
-    case featuredAlbums = "Featured Albums"
-    case sharedAlbums = "Shared Albums"
-    case myAlbums = "My Albums"
-  }
-
-  var dataSource: UICollectionViewDiffableDataSource<Section, AlbumItem>! = nil
-  var albumsCollectionView: UICollectionView! = nil
-
-  var baseURL: URL?
-
-  convenience init(withAlbumsFromDirectory directory: URL) {
-    self.init()
-    baseURL = directory
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    navigationItem.title = "Your Albums"
-    configureCollectionView()
-    configureDataSource()
-  }
+    static let sectionHeaderElementKind = "section-header-element-kind"
+    
+    enum Section: String, CaseIterable {
+        case featuredAlbums = "Featured Albums"
+        case sharedAlbums = "Shared Albums"
+        case myAlbums = "My Albums"
+    }
+    
+    var dataSource: UICollectionViewDiffableDataSource<Section, AlbumItem>! = nil
+    var albumsCollectionView: UICollectionView! = nil
+    
+    var baseURL: URL?
+    
+    convenience init(withAlbumsFromDirectory directory: URL) {
+        self.init()
+        baseURL = directory
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = "Your Albums"
+        configureCollectionView()
+        configureDataSource()
+    }
 }
 
 extension AlbumsViewController {
-  func configureCollectionView() {
-    let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
-    view.addSubview(collectionView)
-    collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    collectionView.backgroundColor = .systemBackground
-    collectionView.delegate = self
-    collectionView.register(AlbumItemCell.self, forCellWithReuseIdentifier: AlbumItemCell.reuseIdentifer)
-    albumsCollectionView = collectionView
-  }
-
-  func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource
-      <Section, AlbumItem>(collectionView: albumsCollectionView) {
-        (collectionView: UICollectionView, indexPath: IndexPath, albumItem: AlbumItem) -> UICollectionViewCell? in
-
-        guard let cell = collectionView.dequeueReusableCell(
-          withReuseIdentifier: AlbumItemCell.reuseIdentifer,
-          for: indexPath) as? AlbumItemCell else { fatalError("Could not create new cell") }
-        cell.featuredPhotoURL = albumItem.imageItems[0].thumbnailURL
-        cell.title = albumItem.albumTitle
-        return cell
+    func configureCollectionView() {
+        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: generateLayout())
+        view.addSubview(collectionView)
+        collectionView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        collectionView.backgroundColor = .systemBackground
+        collectionView.delegate = self
+        collectionView.register(AlbumItemCell.self, forCellWithReuseIdentifier: AlbumItemCell.reuseIdentifer)
+        albumsCollectionView = collectionView
     }
-
-    let snapshot = snapshotForCurrentState()
-    dataSource.apply(snapshot, animatingDifferences: false)
-  }
-
-  func generateLayout() -> UICollectionViewLayout {
-    let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int,
-      layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-      let isWideView = layoutEnvironment.container.effectiveContentSize.width > 500
-      return self.generateMyAlbumsLayout(isWide: isWideView)
+    
+    func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource
+        <Section, AlbumItem>(collectionView: albumsCollectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, albumItem: AlbumItem) -> UICollectionViewCell? in
+            
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: AlbumItemCell.reuseIdentifer,
+                for: indexPath) as? AlbumItemCell else { fatalError("Could not create new cell") }
+            cell.featuredPhotoURL = albumItem.imageItems[0].thumbnailURL
+            cell.title = albumItem.albumTitle
+            return cell
+        }
+        
+        let snapshot = snapshotForCurrentState()
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
-    return layout
-  }
-
-  func generateMyAlbumsLayout(isWide: Bool) -> NSCollectionLayoutSection {
-    let itemSize = NSCollectionLayoutSize(
-      widthDimension: .fractionalWidth(1.0),
-      heightDimension: .fractionalHeight(1.0))
-    let item = NSCollectionLayoutItem(layoutSize: itemSize)
-    item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
-
-    let groupHeight = NSCollectionLayoutDimension.fractionalWidth(isWide ? 0.25 : 0.5)
-    let groupSize = NSCollectionLayoutSize(
-      widthDimension: .fractionalWidth(1.0),
-      heightDimension: groupHeight)
-    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: isWide ? 4 : 2)
-
-    let section = NSCollectionLayoutSection(group: group)
-
-    return section
-  }
-
-  func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, AlbumItem> {
-    let allAlbums = albumsInBaseDirectory()
-    let sharingSuggestions = Array(albumsInBaseDirectory().prefix(3))
-    let sharedAlbums = Array(albumsInBaseDirectory().suffix(3))
-
-    var snapshot = NSDiffableDataSourceSnapshot<Section, AlbumItem>()
-    snapshot.appendSections([Section.featuredAlbums])
-    snapshot.appendItems(sharingSuggestions)
-
-    snapshot.appendSections([Section.sharedAlbums])
-    snapshot.appendItems(sharedAlbums)
-
-    snapshot.appendSections([Section.myAlbums])
-    snapshot.appendItems(allAlbums)
-    return snapshot
-  }
-
-  func albumsInBaseDirectory() -> [AlbumItem] {
-    guard let baseURL = baseURL else { return [] }
-
-    let fileManager = FileManager.default
-    do {
-      return try fileManager.albumsAtURL(baseURL)
-    } catch {
-      print(error)
-      return []
+    
+    func generateLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int,
+                                                            layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+            let isWideView = layoutEnvironment.container.effectiveContentSize.width > 500
+            return self.generateMyAlbumsLayout(isWide: isWideView)
+        }
+        return layout
     }
-  }
+    
+    func generateMyAlbumsLayout(isWide: Bool) -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+        
+        let groupHeight = NSCollectionLayoutDimension.fractionalWidth(isWide ? 0.25 : 0.5)
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: groupHeight)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: isWide ? 4 : 2)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        return section
+    }
+    
+    func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Section, AlbumItem> {
+        let allAlbums = albumsInBaseDirectory()
+        let sharingSuggestions = Array(albumsInBaseDirectory().prefix(3))
+        let sharedAlbums = Array(albumsInBaseDirectory().suffix(3))
+        
+        var snapshot = NSDiffableDataSourceSnapshot<Section, AlbumItem>()
+        snapshot.appendSections([Section.featuredAlbums])
+        snapshot.appendItems(sharingSuggestions)
+        
+        snapshot.appendSections([Section.sharedAlbums])
+        snapshot.appendItems(sharedAlbums)
+        
+        snapshot.appendSections([Section.myAlbums])
+        snapshot.appendItems(allAlbums)
+        return snapshot
+    }
+    
+    func albumsInBaseDirectory() -> [AlbumItem] {
+        guard let baseURL = baseURL else { return [] }
+        
+        let fileManager = FileManager.default
+        do {
+            return try fileManager.albumsAtURL(baseURL)
+        } catch {
+            print(error)
+            return []
+        }
+    }
 }
 
 extension AlbumsViewController: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-    let albumDetailVC = AlbumDetailViewController(withPhotosFromDirectory: item.albumURL)
-    navigationController?.pushViewController(albumDetailVC, animated: true)
-  }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        let albumDetailVC = AlbumDetailViewController(withPhotosFromDirectory: item.albumURL)
+        navigationController?.pushViewController(albumDetailVC, animated: true)
+    }
 }

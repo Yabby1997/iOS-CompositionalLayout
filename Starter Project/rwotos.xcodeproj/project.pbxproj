@@ -47,27 +47,27 @@
 		D2A5F2001F4A9144005CD714 /* rwotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rwotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2A5F20A1F4A9144005CD714 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 4; };
 		E217B207230A8761008C5045 /* PhotoData.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoData.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2288A32230C9D2900C76AE4 /* SyncingBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncingBadgeView.swift; sourceTree = "<group>"; };
+		E2288A32230C9D2900C76AE4 /* SyncingBadgeView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = SyncingBadgeView.swift; sourceTree = "<group>"; tabWidth = 4; };
 		E2288A34230CA22800C76AE4 /* Lyngen */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lyngen; sourceTree = "<group>"; };
 		E2288A35230CA22800C76AE4 /* alta_via_1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = alta_via_1; sourceTree = "<group>"; };
-		E2288A3B230CAD7500C76AE4 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		E2288A3E230D2C8200C76AE4 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
-		E2288A40230D329800C76AE4 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
-		E2288A42230D330D00C76AE4 /* AlbumItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumItem.swift; sourceTree = "<group>"; };
-		E2288A44230D375300C76AE4 /* AlbumItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumItemCell.swift; sourceTree = "<group>"; };
-		E24956B723029CB200D0D46A /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; };
+		E2288A3B230CAD7500C76AE4 /* StringExtension.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; tabWidth = 4; };
+		E2288A3E230D2C8200C76AE4 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; };
+		E2288A40230D329800C76AE4 /* AlbumsViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
+		E2288A42230D330D00C76AE4 /* AlbumItem.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AlbumItem.swift; sourceTree = "<group>"; tabWidth = 4; };
+		E2288A44230D375300C76AE4 /* AlbumItemCell.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AlbumItemCell.swift; sourceTree = "<group>"; tabWidth = 4; };
+		E24956B723029CB200D0D46A /* AlbumDetailViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AlbumDetailViewController.swift; sourceTree = "<group>"; tabWidth = 4; };
 		E27D1B2D230E7C6800DD66D6 /* Mera_Peak */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Mera_Peak; sourceTree = "<group>"; };
-		E27D1B30230E7D4F00DD66D6 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
-		E27D1B32230E8D8500DD66D6 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		E27D1B34230EA1FB00DD66D6 /* FeaturedAlbumItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedAlbumItemCell.swift; sourceTree = "<group>"; };
-		E27D1B36230EA6C300DD66D6 /* SharedAlbumItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedAlbumItemCell.swift; sourceTree = "<group>"; };
+		E27D1B30230E7D4F00DD66D6 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; tabWidth = 4; };
+		E27D1B32230E8D8500DD66D6 /* HeaderView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; tabWidth = 4; };
+		E27D1B34230EA1FB00DD66D6 /* FeaturedAlbumItemCell.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = FeaturedAlbumItemCell.swift; sourceTree = "<group>"; tabWidth = 4; };
+		E27D1B36230EA6C300DD66D6 /* SharedAlbumItemCell.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = SharedAlbumItemCell.swift; sourceTree = "<group>"; tabWidth = 4; };
 		E27D1B38230F539600DD66D6 /* Cairngorms */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Cairngorms; sourceTree = "<group>"; };
 		E27D1B3A230F551900DD66D6 /* alta_via_2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = alta_via_2; sourceTree = "<group>"; };
 		E27D1B3C230F562A00DD66D6 /* Night photography */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Night photography"; sourceTree = "<group>"; };
-		E2A65B52230A791A0078456C /* AlbumDetailItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailItem.swift; sourceTree = "<group>"; };
-		E2A65B54230A7B7F0078456C /* PhotoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoItemCell.swift; sourceTree = "<group>"; };
+		E2A65B52230A791A0078456C /* AlbumDetailItem.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = AlbumDetailItem.swift; sourceTree = "<group>"; tabWidth = 4; };
+		E2A65B54230A7B7F0078456C /* PhotoItemCell.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = PhotoItemCell.swift; sourceTree = "<group>"; tabWidth = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

@@ -29,24 +29,24 @@
 import Foundation
 
 class AlbumDetailItem: Hashable {
-  let photoURL: URL
-  let thumbnailURL: URL
-  let subitems: [AlbumDetailItem]
-
-  init(photoURL: URL, thumbnailURL: URL, subitems: [AlbumDetailItem] = []) {
-    self.photoURL = photoURL
-    self.thumbnailURL = thumbnailURL
-    self.subitems = subitems
-  }
-
-  func hash(into hasher: inout Hasher) {
-    hasher.combine(identifier)
-  }
-
-  static func == (lhs: AlbumDetailItem, rhs: AlbumDetailItem) -> Bool {
-    return lhs.identifier == rhs.identifier
-  }
-
-  private let identifier = UUID()
+    let photoURL: URL
+    let thumbnailURL: URL
+    let subitems: [AlbumDetailItem]
+    
+    init(photoURL: URL, thumbnailURL: URL, subitems: [AlbumDetailItem] = []) {
+        self.photoURL = photoURL
+        self.thumbnailURL = thumbnailURL
+        self.subitems = subitems
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
+    }
+    
+    static func == (lhs: AlbumDetailItem, rhs: AlbumDetailItem) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+    
+    private let identifier = UUID()
 }
 
